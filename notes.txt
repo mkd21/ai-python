@@ -1,0 +1,30 @@
+
+
+
+for messaging models we need 2 things like 
+
+role , content
+
+roles are of 3 types (user , system , assistant )
+
+
+---->> Response 
+
+when response comes from LLM there are mainly 2 things 
+
+CHOICES and USAGE 
+
+CHOICES 
+-----------
+choices contains main answers. 
+LLM's does not return single answer. 
+Can be considered as array of answers 
+
+
+
+
+USAGE 
+-------
+4 letters = 1 token (generally)
+depends on algorithm each company use 
+
