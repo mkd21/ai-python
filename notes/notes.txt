@@ -3,7 +3,7 @@
 
 for messaging models we need 2 things like 
 
-role , content
+ROLE , CONTENT
 
 roles are of 3 types (user , system , assistant )
 
@@ -20,7 +20,7 @@ choices contains main answers.
 LLM's does not return single answer. 
 Can be considered as array of answers 
 
-
+from that we need to select our answer returned by the LLM 
 
 
 USAGE 

@@ -1,0 +1,29 @@
+
+
+SYSTEM Role 
+
+
+its basically an instruction which tells LLM how to behave 
+
+for example 
+
+role : system,
+content : Think like you are a java expert.
+
+ 
+-------------------------------------------------
+
+
+TEMPERATURE 
+
+it is a parameter which controls the randomness or creativity a model can show in selecting the next word.
+
+temperature usually ranges from { 0 , 2}
+
+usecases can be 
+
+for doctor --> temperature should be 0 because randomness is detrimental for their profession
+
+
+for poets , storytellers --> temperature can be adjusted can it will hepl them in getting much creative result as they need 
+
