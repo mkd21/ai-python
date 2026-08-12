@@ -33,7 +33,7 @@ class ResumeAnalysis(BaseModel):
     email : str
     skills : list[str]
     experience_years : float
-    education : list[str]
+    education : str
 
 
 # schema creation 
@@ -41,11 +41,7 @@ schema = ResumeAnalysis.model_json_schema()
 
 # response format 
 response_format = {
-    "type": "json_schema",
-    "json_schema": {
-        "name": "resume_analysis",
-        "schema": schema
-    }
+    "type": "json_object",
 }
 
 
@@ -78,6 +74,21 @@ response = client.chat.completions.create(
 
 # validating the LLM resposne 
 
-jsonResponse = response.choices[0].message.content;
+response_in_string = response.choices[0].message.content;
 
-print(jsonResponse)
+# converting string into python object 
+
+import json
+
+raw_json = response_in_string
+
+data_file = json.loads(raw_json)  # converts string into python object (dictionary)
+
+
+# now for pydantic validation 
+
+resume = ResumeAnalysis(**data_file)  # here ( ** ) means dictionary unpacking 
+
+print(resume.name)
+print(resume.education)
+print(resume.skills)
