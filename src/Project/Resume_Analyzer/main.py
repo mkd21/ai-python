@@ -1,6 +1,7 @@
 
 from .services.llm_service import client
 from .models.job_description import Job_Description_schema
+from .models.job_description import Job_Description
 
 job_description = """
 
@@ -113,8 +114,7 @@ response_format = {
 
 response = client.chat.completions.create(
 
-    model="llama-3.3-70b-versatile",
-
+    model="openai/gpt-oss-120b",
     messages= [ 
         { "role" : "system" , "content" : system_prompt } , 
         {  "role" : "user" , "content" : user_prompt} 
@@ -125,4 +125,20 @@ response = client.chat.completions.create(
 
 answer = response.choices[0].message.content
 
-print(answer)
+
+# now converting json string into dictionary 
+
+import json
+
+data = json.loads(answer)  # data variable stores the dictionary object
+
+jd_details = Job_Description(**data) # creating a pydantic object , ( ** ) unpacks the dictionary into pydantic model.
+                                     # pydantic validated the data against the schema can creates an object whose field can be accessed using dot notation
+
+print(jd_details)
+
+print()
+print()
+print("formatted json")
+
+# print( jd_details.model_dump_json(indent=2))  for visually appealing response 
