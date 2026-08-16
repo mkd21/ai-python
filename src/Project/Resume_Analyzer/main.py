@@ -135,10 +135,8 @@ data = json.loads(answer)  # data variable stores the dictionary object
 jd_details = Job_Description(**data) # creating a pydantic object , ( ** ) unpacks the dictionary into pydantic model.
                                      # pydantic validated the data against the schema can creates an object whose field can be accessed using dot notation
 
-print(jd_details)
 
-print()
-print()
-print("formatted json")
+# print( json.dumps(data , indent=2) )  # if we want to change dictionary(usually) into json string 
 
-# print( jd_details.model_dump_json(indent=2))  for visually appealing response 
+# print( jd_details.model_dump_json(indent=2) )  # if we want to convert pydantic object to json string
+
